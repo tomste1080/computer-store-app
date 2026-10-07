@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Kontakt</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container">
+        <div class="row">
+            <div class="text-center">
+                <h2>Skontaktuj sie z nami!</h2>
+                <h3>Masz pytania? Chętnie pomożemy ci w wyborze sprzętu!</h3>
+            </div>
+            <div class="row justify-content-center g-4 mt-2 mx-auto">
+                <div class="col-md-4 mt-4" style="width: 20rem;">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Gdzie jest moja paczka?</h5>
+                            <a class="btn btn-primary w-100" th:href="@{/kontakt/status}">Sprwdź status</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4" style="width: 20rem;">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Zwroty i gwarancja</h5>
+                            <a class="btn btn-success w-100" th:href="@{/kontakt/zwroty}">Zgłoś reklamację</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4" style="width: 20rem;">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Najczęstsze pytania</h5>
+                            <a class="btn btn-danger w-100" th:href="@{/kontakt/pytania}">Zadaj pytanie</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 offset-1 mb-5">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h4>Dane kontaktowe</h4>
+                        </div>
+                        <div class="mt-4">
+                            <h5>Infolinia:</h5>
+                            <p class="mb-1">+48 123 456 789</p>
+                            <p>(Pn-Pt: 8:00 - 18:00)</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5>Poczta:</h5>
+                            <p>techstore@com.pl</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5>Punkt odbioru i serwis:</h5>
+                            <p class="mb-1">ul. Jana Pawła 12</p>
+                            <p>00-001 Warszawa</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5>Dane rejestrowe:</h5>
+                            <p class="mb-1">TechStore Sp. z o.o.</p>
+                            <p class="mb-1">NIP: 123-456-78-90</p>
+                            <p class="mb-1">REGON: 123456789</p>
+                            <p>Nr konta: PL 2567 3456 2334 2312</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 offset-2 mb-5">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h4>Formularz wiadomości</h4>
+                        </div>
+                        <div class="mt-4">
+                            <form method="post" th:action="@{/kontakt/message}">
+                                <div class="mt-3">
+                                    <label class="form-label">Imię:</label>
+                                    <input class="form-control" type="text" th:name="firstName" th:placeholder="imię">
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">Nazwisko:</label>
+                                    <input class="form-control" type="text" th:name="lastName" th:placeholder="nazwisko">
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">Email:</label>
+                                    <input class="form-control" type="email" th:name="email" th:placeholder="email">
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">Numer zamówienia:</label>
+                                    <input class="form-control" type="text" th:name="orderId" th:placeholder="'numer zamówienia'">
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">Treść wiadomości:</label>
+                                    <input class="form-control" type="text" th:name="description" th:placeholder="treść">
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary w-100 mt-3" type="submit">Wyślij</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <h4 th:if="${success}" th:text="${success}" class="text-success"></h4>
+            </div>
+        </div>
+    </div>
+</body>S
+</html>

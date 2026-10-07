@@ -18,8 +18,10 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     private UserRole userRole;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addresses_id")
     private Address address;
     @OneToMany(mappedBy = "user")

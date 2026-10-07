@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Sklep komputerowy</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div class="row">
+        <div class="col-md-3 mt-3">
+            <h5>Filtry</h5>
+            <form th:method="get" th:action="@{/}">
+                <input type="hidden" name="category" th:value="${category}">
+                <div class="mb-3">
+                    <label class="form-label">Producent</label>
+                    <select class="form-select" name="producer">
+                        <option value="">Wszyscy</option>
+                        <option th:each="producer : ${producers}" th:text="${producer}"></option>
+                    </select>
+                </div>
+                <div class="d-grid gap-2">
+                    <label for="range4" class="form-label">Przedział cenowy</label>
+                    <input type="range"
+                           class="form-range"
+                           min="0"
+                           max="10000"
+                           step="50"
+                           name="maxPrice"
+                           th:value="${criteria?.maxPrice ?: 10000}"
+                           id="range4">
+                    <output for="range4" id="rangeValue" aria-hidden="true"></output>
+                    <script>
+                        const rangeInput = document.getElementById('range4');
+                        const rangeOutput = document.getElementById('rangeValue');
+                        rangeOutput.textContent = rangeInput.value;
+                        rangeInput.addEventListener('input', function() {
+                            rangeOutput.textContent = this.value;
+                        });
+                    </script>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Filtruj</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9 mt-3">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col" th:each="product : ${products}">
+                    <div class="card d-flex shadow-sm" style="width: 18rem;">
+                        <a th:href="@{/product/{id} (id=${product.id})}">
+                            <img th:src="${product.imageUrl}" class="card-img-top product-img" alt="...">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <p class="card-text" th:text="${product.name}">Name</p>
+                                <h5 th:text="|${product.price} zł|">Cena</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

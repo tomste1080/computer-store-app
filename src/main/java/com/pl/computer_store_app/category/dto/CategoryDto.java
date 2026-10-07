@@ -9,6 +9,13 @@ public class CategoryDto {
     public CategoryDto() {
     }
 
+    public CategoryDto(Long id, String name, String slug, String description) {
+        this.id = id;
+        this.name = name;
+        this.slug = slug;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }

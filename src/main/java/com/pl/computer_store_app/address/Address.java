@@ -14,7 +14,9 @@ public class Address {
     private String city;
     private String postalCode;
     private String country;
-    private String addressType;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "address_type")
+    private AddressType addressType;
 
     public Address() {
     }
@@ -59,11 +61,11 @@ public class Address {
         this.country = country;
     }
 
-    public String getAddressType() {
+    public AddressType getAddressType() {
         return addressType;
     }
 
-    public void setAddressType(String addressType) {
+    public void setAddressType(AddressType addressType) {
         this.addressType = addressType;
     }
 

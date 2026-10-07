@@ -1,6 +1,7 @@
 package com.pl.computer_store_app.order.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class OrderDto {
@@ -9,10 +10,20 @@ public class OrderDto {
     private String status;
     private BigDecimal totalAmount;
     private String paymentMethod;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
     private Long userId;
 
     public OrderDto() {
+    }
+
+    public OrderDto(Long id, String orderNumber, String status, BigDecimal totalAmount, String paymentMethod, LocalDate createdAt, Long userId) {
+        this.id = id;
+        this.orderNumber = orderNumber;
+        this.status = status;
+        this.totalAmount = totalAmount;
+        this.paymentMethod = paymentMethod;
+        this.createdAt = createdAt;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -55,11 +66,11 @@ public class OrderDto {
         this.paymentMethod = paymentMethod;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 

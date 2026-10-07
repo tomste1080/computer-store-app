@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container">
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="card mb-5 mt-3 shadow-sm">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h1>Załóż nowe konto</h1>
+                            <p>Dołącz do nas aby śledzić zamówienia i zbierać rabaty</p>
+                        </div>
+                        <div>
+                            <form th:action="@{/rejestracja}" method="post" th:object="${user}">
+                                <div class="mb-3">
+                                    <label class="form-label">Imię:</label>
+                                    <input type="text" class="form-control" th:field="*{firstName}" placeholder="imie">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nazwisko:</label>
+                                    <input type="text" class="form-control" th:field="*{lastName}" placeholder="nazwisko">
+                                </div>
+                                <div class="text-center text-danger mt-3 mb-2">
+                                    <p th:if="${error}" th:text="${error}"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email:</label>
+                                    <input type="text" class="form-control" th:field="*{email}" placeholder="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Hasło:</label>
+                                    <input type="text" class="form-control" th:field="*{password}" placeholder="hasło">
+                                </div>
+                                <div class="text-center text-danger mt-3 mb-2">
+                                    <p th:if="${repeat}" th:text="${repeat}"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="secPassword">Powtórz hasło:</label>
+                                    <input type="text" class="form-control" name="secPassword" id="secPassword" placeholder="powtórz hasło">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Numer telefonu:</label>
+                                    <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="numer telefonu">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ulica:</label>
+                                    <input type="text" class="form-control" th:field="*{address.street}" placeholder="ulica">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Miasto:</label>
+                                    <input type="text" class="form-control" th:field="*{address.city}" placeholder="miasto">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Kod pocztowy:</label>
+                                    <input type="text" class="form-control" th:field="*{address.postalCode}" placeholder="kod pocztowy">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Kraj:</label>
+                                    <input type="text" class="form-control" th:field="*{address.country}" placeholder="kraj">
+                                </div>
+                                <div>
+                                    <label class="form-label">Wybierz typ adresu:</label>
+                                    <select class="form-select" aria-label="Default select example" th:field="*{address.addressType}">
+                                        <option value="DOMOWY">Domowy</option>
+                                        <option value="SHIPPING">Adres do dostawy</option>
+                                        <option value="BILLING">Adres firmowy</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary w-100 mt-3">Zarejestruj się</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

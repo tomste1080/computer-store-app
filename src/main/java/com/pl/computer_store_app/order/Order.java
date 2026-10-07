@@ -3,7 +3,7 @@ package com.pl.computer_store_app.order;
 import com.pl.computer_store_app.user.User;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +17,7 @@ public class Order {
     private String status;
     private BigDecimal totalAmount;
     private String paymentMethod;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
     @ManyToOne
     @JoinColumn(name = "users_id")
     private User user;
@@ -67,11 +67,11 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 

@@ -1,5 +1,6 @@
 package com.pl.computer_store_app.user.dto;
 
+import com.pl.computer_store_app.address.dto.AddressDto;
 import com.pl.computer_store_app.user.UserRole;
 
 public class UserDto {
@@ -9,8 +10,19 @@ public class UserDto {
     private String lastName;
     private String phoneNumber;
     private UserRole userRole;
+    private AddressDto addressDto;
 
     public UserDto() {
+    }
+
+    public UserDto(Long id, String email, String firstName, String lastName, String phoneNumber, UserRole userRole, AddressDto addressDto) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.userRole = userRole;
+        this.addressDto = addressDto;
     }
 
     public Long getId() {
@@ -59,5 +71,13 @@ public class UserDto {
 
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
+    }
+
+    public AddressDto getAddressDto() {
+        return addressDto;
+    }
+
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
     }
 }

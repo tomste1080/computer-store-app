@@ -10,11 +10,24 @@ public class ProductDto {
     private BigDecimal price;
     private int quantity;
     private String description;
-    private String imgUrl;
+    private String imageUrl;
     private boolean active;
     private Long categoryId;
 
     public ProductDto() {
+    }
+
+    public ProductDto(Long id, String name, String sku, String producer, BigDecimal price, int quantity, String description, String imageUrl, boolean active, Long categoryId) {
+        this.id = id;
+        this.name = name;
+        this.sku = sku;
+        this.producer = producer;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.active = active;
+        this.categoryId = categoryId;
     }
 
     public Long getId() {
@@ -73,12 +86,12 @@ public class ProductDto {
         this.description = description;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public boolean isActive() {

@@ -1,15 +1,28 @@
 package com.pl.computer_store_app.cart.dto;
 
+import com.pl.computer_store_app.product.Product;
+import com.pl.computer_store_app.product.dto.ProductDto;
+import com.pl.computer_store_app.user.User;
+import com.pl.computer_store_app.user.dto.UserDto;
+
 import java.time.LocalDateTime;
 
 public class CartDto {
     private Long id;
     private int quantity;
     private LocalDateTime createdAt;
-    private Long userId;
-    private Long productId;
+    private UserDto user;
+    private ProductDto product;
 
     public CartDto() {
+    }
+
+    public CartDto(Long id, int quantity, LocalDateTime createdAt, UserDto user, ProductDto product) {
+        this.id = id;
+        this.quantity = quantity;
+        this.createdAt = createdAt;
+        this.user = user;
+        this.product = product;
     }
 
     public Long getId() {
@@ -36,19 +49,19 @@ public class CartDto {
         this.createdAt = createdAt;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserDto getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 
-    public Long getProductId() {
-        return productId;
+    public ProductDto getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(ProductDto product) {
+        this.product = product;
     }
 }

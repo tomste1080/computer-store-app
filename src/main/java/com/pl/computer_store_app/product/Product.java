@@ -17,9 +17,10 @@ public class Product {
     private BigDecimal price;
     private int quantity;
     private String description;
-    private String imgUrl;
+    private String imageUrl;
     private boolean active;
     @ManyToOne
+    @JoinColumn(name = "categories_id")
     private Category category;
 
     public Product() {
@@ -81,12 +82,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public boolean isActive() {
@@ -109,11 +110,11 @@ public class Product {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return quantity == product.quantity && active == product.active && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(sku, product.sku) && Objects.equals(producer, product.producer) && Objects.equals(price, product.price) && Objects.equals(description, product.description) && Objects.equals(imgUrl, product.imgUrl) && Objects.equals(category, product.category);
+        return quantity == product.quantity && active == product.active && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(sku, product.sku) && Objects.equals(producer, product.producer) && Objects.equals(price, product.price) && Objects.equals(description, product.description) && Objects.equals(imageUrl, product.imageUrl) && Objects.equals(category, product.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, sku, producer, price, quantity, description, imgUrl, active, category);
+        return Objects.hash(id, name, sku, producer, price, quantity, description, imageUrl, active, category);
     }
 }
