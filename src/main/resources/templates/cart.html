@@ -18,10 +18,11 @@
                         <th scope="col">Cena</th>
                         <th scope="col">Ilość</th>
                         <th scope="col">Suma</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody th:each="item, idx : ${cartProducts}">
-                    <tr>
+                    <tr class="align-middle">
                         <td>
                             <div class="d-flex align-items-start gap-3">
                                 <img th:src="${item.product.imageUrl}" width="100" height="100">
@@ -29,8 +30,26 @@
                             </div>
                         </td>
                         <td th:text="|${item.product.price} zł|">Price</td>
-                        <td th:text="|${item.product.quantity} sztk|">Ilość</td>
-                        <td th:text="|${productPrice} zł|">Suma</td>
+                        <td class="align-middle">
+                            <div class="d-inline-flex align-items-center gap-2">
+                                <span th:text="|${item.quantity} szt.|">1 szt.</span>
+                                <form method="post" th:action="@{/koszyk/zwieksz}" class="d-inline m-0">
+                                    <input type="hidden" name="id" th:value="${item.id}" />
+                                    <button type="submit"
+                                            class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center"
+                                            style="width: 26px; height: 26px; padding: 0; font-size: 14px; line-height: 1;">
+                                        +
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                        <td th:text="|${productPrice} zł|">Cena</td>
+                        <td>
+                            <form method="post" th:action="@{/koszyk/usun}">
+                                <input type="hidden" name="id" th:value="${item.id}" />
+                                <button type="submit" class="btn btn-danger">Usuń z koszyka</button>
+                            </form>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -46,7 +65,9 @@
                         <p class="ms-3">15zł</p>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-primary" th:href="@{/koszyk/kasa}">Przejdź do kasy</a>
+                        <form method="post" th:action="@{/koszyk/kasa}">
+                            <button class="btn btn-success">Przejdź do kasy</button>
+                        </form>
                     </div>
                     <div class="text-center mt-3">
                         <label class="form-check-label" for="checkDefault">

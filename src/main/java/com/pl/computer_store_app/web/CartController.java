@@ -43,4 +43,25 @@ public class CartController {
         cartService.addToCart(userId, productId);
         return "redirect:/koszyk";
     }
+
+    @PostMapping("/koszyk/usun")
+    public String deleteFromCart(@RequestParam Long id) {
+        cartService.deleteFromCart(id);
+        return "redirect:/koszyk";
+    }
+
+    @PostMapping("/koszyk/kasa")
+    public String payForProduct(Authentication authentication, Model model) {
+        String email = authentication.getName();
+        Long userId = userService.findUserByEmail(email).getId();
+        cartService.payForProducts(userId);
+        model.addAttribute("success", "Płatność przebiegła pomyślnie, twoje zamówienie jest w realizacji.");
+        return "payment";
+    }
+
+    @PostMapping("/koszyk/zwieksz")
+    public String increaseAmountOfProduct(@RequestParam Long id) {
+        cartService.increaserQuantity(id);
+        return "redirect:/koszyk";
+    }
 }

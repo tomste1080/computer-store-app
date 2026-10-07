@@ -73,4 +73,24 @@ public class CartService {
         BigDecimal deliveryFee = BigDecimal.valueOf(15.00);
         return totalPrice.add(deliveryFee);
     }
+
+    @Transactional
+    public void deleteFromCart(Long id) {
+        cartRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void payForProducts(Long userId) {
+        cartRepository.deleteAllByUser_Id(userId);
+    }
+
+    @Transactional
+    public void increaserQuantity(Long cartItemId ) {
+        Cart cartItem = cartRepository.findById(cartItemId)
+                .orElseThrow(() -> new IllegalArgumentException("Nie można znaleźć produktu o takim ID w koszyku"));
+        if (cartItem.getQuantity() < cartItem.getProduct().getQuantity()) {
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+            cartRepository.save(cartItem);
+        }
+    }
 }
