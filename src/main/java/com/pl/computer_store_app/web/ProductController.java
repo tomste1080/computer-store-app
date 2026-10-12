@@ -23,7 +23,7 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public String getProductDetails(@PathVariable Long id, Model model) {
         ProductDto product = productService.findProductById(id);
-        CategoryDto category = categoryService.findCategoryById(product.getCategoryId());
+        CategoryDto category = categoryService.findCategoryById(product.getCategoryDto().getId());
         model.addAttribute("product", product);
         model.addAttribute("category", category);
         return "product-details";

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj nowy produkt</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container">
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="text-center mb-2">
+                            <h2><i class="fas fa-plus"></i> Dodaj nowy produkt</h2>
+                        </div>
+                        <form th:action="@{/admin/produkty/dodaj}" method="post" th:object="${product}">
+                            <div class="mb-3">
+                                <label class="form-label">Nazwa produktu:</label>
+                                <input type="text" class="form-control" th:field="*{name}" placeholder="np. Karta graficzna RTX 5070">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Podaj kod magazynowy:</label>
+                                <input type="text" class="form-control" th:field="*{sku}" placeholder="kod magazynowy">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Producent:</label>
+                                <input type="text" class="form-control" th:field="*{producer}" placeholder="producent">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Cena:</label>
+                                <input type="number" class="form-control" th:field="*{price}" placeholder="cena produktu">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ilość:</label>
+                                <input type="number" class="form-control" th:field="*{quantity}" placeholder="ilość sztuk">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Adres URL:</label>
+                                <input type="text" class="form-control" th:field="*{imageUrl}" placeholder="img/rtx5070.png">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Opis produktu:</label>
+                                <textarea class="form-control form-control-lg" th:field="*{description}"
+                                          placeholder="opis produktu" aria-label="Large textarea example"></textarea>
+                            </div>
+                            <div class="form-field mb-3">
+                                <label class="form-label">Wybierz kategorię:</label>
+                                <select class="form-control" th:field="*{categoryDto.id}">
+                                    <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}">Category</option>
+                                </select>
+                            </div>
+                            <div class="row g-2 mt-3">
+                                <div class="col-6">
+                                    <a class="btn btn-danger btn-lg w-100" th:href="@{/}">Anuluj</a>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Zapisz produkt</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

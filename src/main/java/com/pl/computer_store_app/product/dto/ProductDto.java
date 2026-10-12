@@ -1,5 +1,8 @@
 package com.pl.computer_store_app.product.dto;
 
+import com.pl.computer_store_app.category.Category;
+import com.pl.computer_store_app.category.dto.CategoryDto;
+
 import java.math.BigDecimal;
 
 public class ProductDto {
@@ -12,12 +15,12 @@ public class ProductDto {
     private String description;
     private String imageUrl;
     private boolean active;
-    private Long categoryId;
+    private CategoryDto categoryDto;
 
     public ProductDto() {
     }
 
-    public ProductDto(Long id, String name, String sku, String producer, BigDecimal price, int quantity, String description, String imageUrl, boolean active, Long categoryId) {
+    public ProductDto(Long id, String name, String sku, String producer, BigDecimal price, int quantity, String description, String imageUrl, boolean active, CategoryDto categoryDto) {
         this.id = id;
         this.name = name;
         this.sku = sku;
@@ -27,7 +30,7 @@ public class ProductDto {
         this.description = description;
         this.imageUrl = imageUrl;
         this.active = active;
-        this.categoryId = categoryId;
+        this.categoryDto = categoryDto;
     }
 
     public Long getId() {
@@ -102,11 +105,11 @@ public class ProductDto {
         this.active = active;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public CategoryDto getCategoryDto() {
+        return categoryDto;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryDto(CategoryDto categoryDto) {
+        this.categoryDto = categoryDto;
     }
 }

@@ -33,5 +33,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             @Param("minPrice") BigDecimal minPrice,
             @Param("maxPrice") BigDecimal maxPrice
     );
+
+    void deleteById(Long id);
 }
 

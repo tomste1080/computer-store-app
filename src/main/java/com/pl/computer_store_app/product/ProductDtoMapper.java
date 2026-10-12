@@ -1,5 +1,6 @@
 package com.pl.computer_store_app.product;
 
+import com.pl.computer_store_app.category.CategoryDtoMapper;
 import com.pl.computer_store_app.product.dto.ProductDto;
 
 public class ProductDtoMapper {
@@ -14,7 +15,7 @@ public class ProductDtoMapper {
                 product.getDescription(),
                 product.getImageUrl(),
                 product.isActive(),
-                product.getCategory().getId()
+                CategoryDtoMapper.map(product.getCategory())
         );
     }
 }

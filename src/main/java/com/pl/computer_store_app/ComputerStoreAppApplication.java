@@ -10,7 +10,7 @@ public class ComputerStoreAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ComputerStoreAppApplication.class, args);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        System.out.println("NOWY_HASH_ADMIN: " + encoder.encode("admin123"));
+        System.out.println("NOWY_HASH_ADMIN: " + encoder.encode("admin"));
 	}
 
 }

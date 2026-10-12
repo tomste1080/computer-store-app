@@ -2,7 +2,8 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layout}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Sklep komputerowy</title>
@@ -56,8 +57,17 @@
                                 <p class="card-text" th:text="${product.name}">Name</p>
                                 <h5 th:text="|${product.price} zł|">Cena</h5>
                             </div>
+                            <div sec:authorize="hasRole('ADMIN')" class="text-center mb-1">
+                                <form th:action="@{/admin/produkty/usun}" method="post">
+                                    <input type="hidden" name="id" th:value="${product.id}">
+                                    <button type="submit" class="btn btn-danger">Usuń produkt</button>
+                                </form>
+                            </div>
                         </a>
                     </div>
+                </div>
+                <div sec:authorize="hasRole('ADMIN')" class="d-flex justify-content-between align-items-center mb-4">
+                    <a class="btn btn-success" th:href="@{/admin/produkty/dodaj}"> <i class="fas fa-plus me-1"></i>Dodaj produkt</a>
                 </div>
             </div>
         </div>

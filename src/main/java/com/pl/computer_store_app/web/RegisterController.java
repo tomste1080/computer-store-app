@@ -1,13 +1,10 @@
 package com.pl.computer_store_app.web;
 
 import com.pl.computer_store_app.address.Address;
-import com.pl.computer_store_app.address.dto.AddressDto;
 import com.pl.computer_store_app.user.User;
 import com.pl.computer_store_app.user.UserRepository;
 import com.pl.computer_store_app.user.UserRole;
 import com.pl.computer_store_app.user.UserService;
-import com.pl.computer_store_app.user.dto.UserDto;
-import org.springframework.boot.Banner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
